@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Üsküdar Univercity Student Page</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div ng-app="contactList" ng-controller="nameAdderController as nameAdder">
+        < class="container">
+            <div class="row">
+                <header class="col-md-offset-1 col-md-10">
+        <img src="https://narmasallari.com/wp-content/uploads/2020/09/logo@2x.png" width="320" height="120" alt="" style="padding-left: 2px;">
+                    
+                    <h1> Human Resourses Management</h1>
+                    <h3>Student's Page</h3>
+                    <small></small>
+
+                    <hr>
+                </header>
+            </div>
+
+            <div class="form-group" style="padding:0px 110px 5px; width:100%;";>
+                <input placeholder="Search Names" class="form-control" ng-model="filters.name"></input>
+                
+            </div>
+
+                <div class="col-md-7 module contact-list">
+                    <form>
+                      
+                        <div class="form-group pull-right">
+                            <button type="button" class="btn btn-danger" ng-click="deleteAll()"><i class="glyphicon glyphicon-trash"></i> Delete All Contacts</button>
+                            <button ng-click="favToggle()" ng-model="favSort" ng-class="on" class="btn btn-default favorite-btn"><i class="glyphicon glyphicon-heart"></i> Show Favorites</button>
+                        </div>
+                    </form>
+                    <div class="table-wrap clearfix">
+                        <table class="table table-hover table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th ng-click="nameSorter()">Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Department</th>
+                                    <th>Office Number </th>
+                                    <th>Position</th>
+                                    <th>Time Table</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-size-adjust: 25px;width: 100%;">
+                                <tr ng-repeat="obj in nameList | filter:filters:exactMatch | filter:filterFavs track by $index" class="{{obj.favorite}} animated fadeIn">
+                                    <td class="text-capitalize"><i class="glyphicon glyphicon-user"></i> {{ obj.name }}</td>
+                                    <td class="text-lowercase"><i class="glyphicon glyphicon-envelope"></i> {{ obj.email }}</td>
+                                    <td><i class="glyphicon glyphicon-earphone"></i> {{obj.phone}}</td>
+                                    <td>MDBF</td>
+                                    <td>102</td>
+                                    <td>Student</td>
+                                    <td class="text-right">
+                                        <a href="#" ><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="#" ><i class="glyphicon glyphicon-heart"></i></a>
+                                        <a href="#" ><i class="glyphicon glyphicon-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <footer class="col-xs-12 text-center"></footer>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js'></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
